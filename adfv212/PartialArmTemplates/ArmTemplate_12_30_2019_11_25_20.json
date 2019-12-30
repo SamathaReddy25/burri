@@ -6,18 +6,6 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "adfv212"
-		},
-		"AzureBlobStorage1_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
-		},
-		"AzureSqlDatabase1_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
-		},
-		"AzureSynapseAnalytics1_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureSynapseAnalytics1'"
 		}
 	},
 	"variables": {
@@ -196,15 +184,13 @@
 						"inputs": [
 							{
 								"referenceName": "SourceDataset_n6i",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "DestinationDataset_n6i",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					},
@@ -256,8 +242,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"url": "burrisamathareddy@gmail.com",
-							"method": "GET",
-							"headers": {}
+							"method": "GET"
 						}
 					},
 					{
@@ -369,15 +354,13 @@
 						"inputs": [
 							{
 								"referenceName": "SourceDataset_n6i",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "DestinationDataset_jde",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					}
@@ -385,9 +368,6 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/SourceDataset_n6i')]",
-				"[concat(variables('factoryId'), '/datasets/DestinationDataset_n6i')]",
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]",
 				"[concat(variables('factoryId'), '/datasets/DestinationDataset_jde')]"
 			]
 		},
@@ -569,15 +549,13 @@
 						"inputs": [
 							{
 								"referenceName": "SourceDataset_jde",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "DestinationDataset_jde",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					}
@@ -586,8 +564,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/SourceDataset_jde')]",
-				"[concat(variables('factoryId'), '/datasets/DestinationDataset_jde')]",
-				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+				"[concat(variables('factoryId'), '/datasets/DestinationDataset_jde')]"
 			]
 		},
 		{
@@ -682,37 +659,7 @@
 					"table": "PurchaseOrders"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSynapseAnalytics1')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DestinationDataset_n6i')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobStorage1",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "Purchasing.PurchaseOrders.csv",
-						"container": "bacpac-database"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/SourceDataset_jde')]",
@@ -802,141 +749,6 @@
 				"typeProperties": {
 					"schema": "Purchasing",
 					"table": "PurchaseOrders"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SourceDataset_n6i')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureSqlDatabase1",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "PurchaseOrderID",
-						"type": "int",
-						"precision": 10,
-						"scale": 255
-					},
-					{
-						"name": "SupplierID",
-						"type": "int",
-						"precision": 10,
-						"scale": 255
-					},
-					{
-						"name": "OrderDate",
-						"type": "date",
-						"precision": 255,
-						"scale": 255
-					},
-					{
-						"name": "DeliveryMethodID",
-						"type": "int",
-						"precision": 10,
-						"scale": 255
-					},
-					{
-						"name": "ContactPersonID",
-						"type": "int",
-						"precision": 10,
-						"scale": 255
-					},
-					{
-						"name": "ExpectedDeliveryDate",
-						"type": "date",
-						"precision": 255,
-						"scale": 255
-					},
-					{
-						"name": "SupplierReference",
-						"type": "nvarchar",
-						"precision": 255,
-						"scale": 255
-					},
-					{
-						"name": "IsOrderFinalized",
-						"type": "bit",
-						"precision": 255,
-						"scale": 255
-					},
-					{
-						"name": "Comments",
-						"type": "nvarchar",
-						"precision": 255,
-						"scale": 255
-					},
-					{
-						"name": "InternalComments",
-						"type": "nvarchar",
-						"precision": 255,
-						"scale": 255
-					},
-					{
-						"name": "LastEditedBy",
-						"type": "int",
-						"precision": 10,
-						"scale": 255
-					},
-					{
-						"name": "LastEditedWhen",
-						"type": "datetime2",
-						"precision": 255,
-						"scale": 7
-					}
-				],
-				"typeProperties": {
-					"schema": "Purchasing",
-					"table": "PurchaseOrders"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobStorage",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureBlobStorage1_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureSqlDatabase1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureSqlDatabase1_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureSynapseAnalytics1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDW",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureSynapseAnalytics1_connectionString')]"
 				}
 			},
 			"dependsOn": []

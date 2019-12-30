@@ -10,6 +10,9 @@
 		},
 		"AzureSqlDatabase1_connectionString": {
 			"value": ""
+		},
+		"AzureSynapseAnalytics1_connectionString": {
+			"value": ""
 		}
 	}
 }

@@ -35,10 +35,135 @@
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
 							"quoteAllText": true,
-							"fileExtension": ".txt"
+							"fileExtension": ".csv"
 						}
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "PurchaseOrderID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "PurchaseOrderID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "SupplierID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "SupplierID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "OrderDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "DeliveryMethodID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "DeliveryMethodID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ContactPersonID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ContactPersonID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ExpectedDeliveryDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "ExpectedDeliveryDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "SupplierReference",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SupplierReference",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IsOrderFinalized",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "IsOrderFinalized",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"name": "Comments",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Comments",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InternalComments",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InternalComments",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LastEditedBy",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "LastEditedBy",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "LastEditedWhen",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "LastEditedWhen",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
@@ -52,6 +177,57 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Stored Procedure1",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Copy_n6i",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[Integration].[GetStockHoldingUpdates]"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Copy_n6i",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "burrisamathareddy@gmail.com",
+					"method": "GET"
+				}
 			}
 		],
 		"annotations": []

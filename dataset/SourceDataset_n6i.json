@@ -1,0 +1,89 @@
+{
+	"name": "SourceDataset_n6i",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "PurchaseOrderID",
+				"type": "int",
+				"precision": 10,
+				"scale": 255
+			},
+			{
+				"name": "SupplierID",
+				"type": "int",
+				"precision": 10,
+				"scale": 255
+			},
+			{
+				"name": "OrderDate",
+				"type": "date",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "DeliveryMethodID",
+				"type": "int",
+				"precision": 10,
+				"scale": 255
+			},
+			{
+				"name": "ContactPersonID",
+				"type": "int",
+				"precision": 10,
+				"scale": 255
+			},
+			{
+				"name": "ExpectedDeliveryDate",
+				"type": "date",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "SupplierReference",
+				"type": "nvarchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "IsOrderFinalized",
+				"type": "bit",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "Comments",
+				"type": "nvarchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "InternalComments",
+				"type": "nvarchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "LastEditedBy",
+				"type": "int",
+				"precision": 10,
+				"scale": 255
+			},
+			{
+				"name": "LastEditedWhen",
+				"type": "datetime2",
+				"precision": 255,
+				"scale": 7
+			}
+		],
+		"typeProperties": {
+			"schema": "Purchasing",
+			"table": "PurchaseOrders"
+		}
+	}
+}

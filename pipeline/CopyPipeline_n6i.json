@@ -255,15 +255,8 @@
 						"queryTimeout": "02:00:00"
 					},
 					"sink": {
-						"type": "DelimitedTextSink",
-						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
-						}
+						"type": "SqlDWSink",
+						"tableOption": "autoCreate"
 					},
 					"enableStaging": false,
 					"translator": {
@@ -350,7 +343,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DestinationDataset_n6i",
+						"referenceName": "DestinationDataset_jde",
 						"type": "DatasetReference"
 					}
 				]

@@ -1,0 +1,22 @@
+{
+	"name": "DestinationDataset_e51",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage2120",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "bacpac"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

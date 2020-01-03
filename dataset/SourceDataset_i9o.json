@@ -1,0 +1,141 @@
+{
+	"name": "SourceDataset_i9o",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "CustomerID",
+				"type": "int"
+			},
+			{
+				"name": "CustomerName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BillToCustomerID",
+				"type": "int"
+			},
+			{
+				"name": "CustomerCategoryID",
+				"type": "int"
+			},
+			{
+				"name": "BuyingGroupID",
+				"type": "int"
+			},
+			{
+				"name": "PrimaryContactPersonID",
+				"type": "int"
+			},
+			{
+				"name": "AlternateContactPersonID",
+				"type": "int"
+			},
+			{
+				"name": "DeliveryMethodID",
+				"type": "int"
+			},
+			{
+				"name": "DeliveryCityID",
+				"type": "int"
+			},
+			{
+				"name": "PostalCityID",
+				"type": "int"
+			},
+			{
+				"name": "CreditLimit",
+				"type": "decimal"
+			},
+			{
+				"name": "AccountOpenedDate",
+				"type": "date"
+			},
+			{
+				"name": "StandardDiscountPercentage",
+				"type": "decimal"
+			},
+			{
+				"name": "IsStatementSent",
+				"type": "bit"
+			},
+			{
+				"name": "IsOnCreditHold",
+				"type": "bit"
+			},
+			{
+				"name": "PaymentDays",
+				"type": "int"
+			},
+			{
+				"name": "PhoneNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FaxNumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryRun",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RunPosition",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WebsiteURL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryAddressLine1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryAddressLine2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryPostalCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DeliveryLocation",
+				"type": "WideWorldImporters-Standard.sys.geography"
+			},
+			{
+				"name": "PostalAddressLine1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PostalAddressLine2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PostalPostalCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LastEditedBy",
+				"type": "int"
+			},
+			{
+				"name": "ValidFrom",
+				"type": "datetime2"
+			},
+			{
+				"name": "ValidTo",
+				"type": "datetime2"
+			}
+		],
+		"typeProperties": {
+			"schema": "Sales",
+			"table": "Customers"
+		}
+	}
+}

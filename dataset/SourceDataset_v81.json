@@ -1,0 +1,65 @@
+{
+	"name": "SourceDataset_v81",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "PurchaseOrderID",
+				"type": "int"
+			},
+			{
+				"name": "SupplierID",
+				"type": "int"
+			},
+			{
+				"name": "OrderDate",
+				"type": "date"
+			},
+			{
+				"name": "DeliveryMethodID",
+				"type": "int"
+			},
+			{
+				"name": "ContactPersonID",
+				"type": "int"
+			},
+			{
+				"name": "ExpectedDeliveryDate",
+				"type": "date"
+			},
+			{
+				"name": "SupplierReference",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IsOrderFinalized",
+				"type": "bit"
+			},
+			{
+				"name": "Comments",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InternalComments",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LastEditedBy",
+				"type": "int"
+			},
+			{
+				"name": "LastEditedWhen",
+				"type": "datetime2"
+			}
+		],
+		"typeProperties": {
+			"schema": "Purchasing",
+			"table": "PurchaseOrders"
+		}
+	}
+}
